@@ -1,6 +1,3 @@
-def prost(n):
-    pass
-
 def mnoj(n, m, s, x):
     if m > x**(1/2)+1:
         return s + [x]
