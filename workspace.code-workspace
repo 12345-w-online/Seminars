@@ -1,11 +1,11 @@
 {
 	"folders": [
 		{
-			"path": "week 4"
-		},
-		{
 			"name": "Ceminars",
 			"path": "."
+		},
+		{
+			"path": "../Labs"
 		}
 	]
 }
