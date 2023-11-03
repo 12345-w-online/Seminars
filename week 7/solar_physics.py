@@ -101,18 +101,20 @@ def calculate_force(body, space_objects):
     body.Fx = body.Fy = 0
     for obj in space_objects:
         if body == obj:
-            pass
+            continue
         else:
             r_2 = ((body.x - obj.x) ** 2 + (body.y - obj.y) ** 2)
             F = (gravitational_constant * body.m * obj.m) / r_2
             # a это угол между вектором силы и горизонталью 
             a = math.atan(obj.y - body.y) / (obj.x - body.x)
             # cosinus a со знаком
-            cos_a = math.cos(a if obj.x - body.x >0 else abs(a) + (pi / 2))
-            sin_a = math.sin(a) if obj.x - body.x >0 else -1 * math.sin(a)
+            cos_a = math.cos(a if obj.x - body.x > 0 else abs(a) + (pi / 2))
+            sin_a = math.sin(a) if obj.x - body.x > 0 else -1 * math.sin(a)
 
-            body.Fx = body.Fx + F * cos_a
-            body.Fy = body.Fy + F * -sin_a
+            print(((body.x - obj.x) / r_2 ** (0.5)), ((body.y - obj.y) / r_2 ** (0.5)))
+
+            body.Fx = body.Fx + (-1) * F * ((body.x - obj.x) / r_2 ** (0.5))
+            body.Fy = body.Fy + (-1) * F * ((body.y - obj.y) / r_2 ** (0.5))
 
 
 def move_space_object(body, dt):
@@ -123,18 +125,20 @@ def move_space_object(body, dt):
 
     **body** — тело, которое нужно переместить.
     """
-
-    ax = body.Fx / body.m
-    body.x = body.x + body.Vx * dt
-    body.Vx = body.Vx + ax * dt
-
     ay = body.Fy / body.m
     # body.Vy =0
     body.y = body.y + body.Vy * dt
-    body.Vy = body.Vy + ay * dt 
-    print(ay, body.Vy)
+    body.Vy = body.Vy + ay * dt
+    # print(body.x, body.y)
     # body.Vy = 0 
     '''zhitь ( ͡ಥ ͜ʖ ͡ಥ)'''
+    
+    ax = body.Fx / body.m
+    body.x = body.x + body.Vx * dt
+    body.Vx = body.Vx + ax * dt
+    
+
+    
 
 
 def recalculate_space_objects_positions(space_objects, dt):
