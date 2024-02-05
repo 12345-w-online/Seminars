@@ -2,10 +2,7 @@
 	"folders": [
 		{
 			"name": "Ceminars",
-			"path": "."
-		},
-		{
-			"path": "../Labs"
+			"path": ".",
 		}
 	]
 }
